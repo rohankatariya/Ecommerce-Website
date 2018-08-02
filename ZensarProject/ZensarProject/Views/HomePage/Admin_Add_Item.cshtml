@@ -1,0 +1,107 @@
+﻿
+@{
+    Layout = null;
+}
+
+@model ZensarProject.Models.Product
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Index</title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#slideshow > div:gt(0)").hide();
+            setInterval(function () {
+                $('#SlideshowImages > div:first').fadeOut(3000).next().fadeIn(3000).end().appendTo('#SlideshowImages');
+            }, 3000);
+        });
+        function disp() {
+            $("#cont2").show();
+        }
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/Content/Dropdown.css" rel="stylesheet" />
+
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="container-fluid">
+            <nav id="nav1" class="nav">
+                <div class="col-lg-12 upnav">
+                    @Html.ActionLink("Home", "Index")
+                    @Html.ActionLink("About Us", "Index")
+                    @Html.ActionLink("Contact Us", "Index")
+                    @Html.ActionLink("FAQs", "Index")
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <h2 id="tit">
+                            <b>ShoppingBag</b><span class="glyphicon glyphicon-home"></span>
+                        </h2>
+                    </div>
+                    <div class="col-lg-8" id="searchp">
+                        <i><input type="text" placeholder="Search for product and items" id="search" /></i>
+                        <span class="glyphicon glyphicon-search"></span>
+                    </div>
+                    <div class="col-lg-1">
+                        <snap id="bt1" class="glyphicon glyphicon-user" onclick="disp()"></snap>@Html.ActionLink("User", "LogIn", "HomePage", routeValues: 0, htmlAttributes: null)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        @Html.ActionLink("Home", "Index")
+                        @Html.ActionLink("About Us", "Index")
+                        @Html.ActionLink("Contact Us", "Index")
+                        @Html.ActionLink("FAQs", "Index")
+                    </div>
+                </div>
+            </nav>
+            <div class="row ">
+                <div class="col-lg-11 navk">
+                    @Html.ActionLink("Home Appliance", "Home_Appliance")<span class="glyphicon glyphicon-chevron-down"></span>
+                    @Html.ActionLink("Mobile", "Mobile")<span class="glyphicon glyphicon-chevron-down"></span>
+                    @Html.ActionLink("Furniture", "Furniture")<span class="glyphicon glyphicon-chevron-down"></span>
+                    @Html.ActionLink("Electronics", "Electronics")<span class="glyphicon glyphicon-chevron-down"></span>
+                    @Html.ActionLink("Mens Wear", "Mens_Wear")<span class="glyphicon glyphicon-chevron-down"></span>
+                    @Html.ActionLink("Womans Wear", "Womans_Wear")<span class="glyphicon glyphicon-chevron-down"></span>
+                </div>
+                <div class="col-lg-1 navk">
+                    
+                        <span class="glyphicon glyphicon-shopping-cart" style="" ></span>
+                        @Html.ActionLink("Cart","Cart")
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-3 col-md-6">
+                    <b>Category Id:</b>
+                    @Html.EditorFor(model => model.Category_Id, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Category_Id, "", new { @class = "text-danger" })
+
+
+                    <label><b>Product Name</b></label>
+                    @Html.EditorFor(model => model.Product_Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Product_Name, "", new { @class = "text-danger" })
+
+                    <label><b>Product Price</b></label>
+                    @Html.EditorFor(model => model.Product_Price, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Product_Price, "", new { @class = "text-danger" })
+
+                    <label><b>Image Address</b></label>
+                    @Html.EditorFor(model => model.image, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger" })
+
+                    <button type="submit">Login</button>
+               </div>
+            </div>
+        </div>
+    }
+</body>
+</html>

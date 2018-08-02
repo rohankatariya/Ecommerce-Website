@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = null;
+}
+
+@model ZensarProject.Models.Product
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Index</title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#slideshow > div:gt(0)").hide();
+            setInterval(function () {
+                $('#SlideshowImages > div:first').fadeOut(3000).next().fadeIn(3000).end().appendTo('#SlideshowImages');
+            }, 3000);
+        });
+        function disp() {
+            $("#cont2").show();
+        }
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/Content/Dropdown.css" rel="stylesheet" />
+
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        foreach (var item in ViewBag.a)
+        {
+            item
+        }
+    }
+
+</body>
+</html>

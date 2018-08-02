@@ -1,0 +1,165 @@
+﻿@model ZensarProject.Models.Registration
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sign_up</title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#slideshow > div:gt(0)").hide();
+            setInterval(function () {
+                $('#SlideshowImages > div:first').fadeOut(3000).next().fadeIn(3000).end().appendTo('#SlideshowImages');
+            }, 3000);
+        });
+        function disp() {
+            $("#cont2").show();
+        }
+    </script>
+    <style type="text/css">
+        table {
+            margin-top: 50px;
+            padding: 5px;
+            padding-right: 50px;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/Content/Dropdown.css" rel="stylesheet" />
+
+
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="container-fluid">
+            <nav id="nav1" class="nav">
+                <div class="col-lg-12 upnav">
+                    @Html.ActionLink("Home", "Index")
+                    @Html.ActionLink("About Us", "Index")
+                    @Html.ActionLink("Contact Us", "Index")
+                    @Html.ActionLink("FAQs", "Index")
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <h2 id="tit">
+                            <b>ShoppingBag</b><span class="glyphicon glyphicon-home"></span>
+                        </h2>
+                    </div>
+                    <div class="col-lg-8" id="searchp">
+                        <i><input type="text" placeholder="Search for product and items" id="search" /></i>
+                        <span class="glyphicon glyphicon-search"></span>
+                    </div>
+                    <div class="col-lg-1">
+                        <snap id="bt1" class="glyphicon glyphicon-user" onclick="disp()"></snap>@Html.ActionLink("User", "LogIn", "HomePage", routeValues: 0, htmlAttributes: null)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        @Html.ActionLink("Home", "Index")
+                        @Html.ActionLink("About Us", "Index")
+                        @Html.ActionLink("Contact Us", "Index")
+                        @Html.ActionLink("FAQs", "Index")
+                    </div>
+                </div>
+            </nav>
+            <div class="row ">
+                <div class="col-lg-12 navk">
+                    @Html.ActionLink("Home Appliance", "Index")<span class="glyphicon glyphicon-down"></span>
+                    @Html.ActionLink("Mobile", "Index")<span class="glyphicon glyphicon-down"></span>
+                    @Html.ActionLink("Furniture", "Index")<span class="glyphicon glyphicon-down"></span>
+                    @Html.ActionLink("Electronics", "Index")<span class="glyphicon glyphicon-down"></span>
+                    @Html.ActionLink("Mens Wear", "Index")<span class="glyphicon glyphicon-down"></span>
+                    @Html.ActionLink("Womans Wear", "Index")<span class="glyphicon glyphicon-down"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-3 col-md-6">
+                        <h4>Registration</h4>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FName, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.FName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.FName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.LName, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.LName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.LName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.PasswordFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                                @ViewBag.conf
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("state")
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                              @Html.RadioButton("r1","Male")Male
+                                @Html.RadioButton("r1", "FeMale")Female
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button type="submit">Submit Detailes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @ViewBag.adduser
+    }
+    </body>
+</html>
